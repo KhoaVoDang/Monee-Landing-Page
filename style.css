@@ -1,0 +1,562 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #111111;
+    --accent-color: #000000;
+    --secondary-text: #666666;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+    /* Standard initial padding */
+    margin: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: transparent;
+    /* Start transparent */
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Smooth springy ease */
+    border-radius: 0;
+    width: 100%;
+    box-sizing: border-box;
+    /* Ensure padding doesn't widen it */
+    border: 1px solid transparent;
+}
+
+header.scrolled {
+    padding: 10px 24px;
+    top: 20px;
+    /* Detach from top */
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 100px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    /* Slightly stronger shadow when floating */
+    border-color: rgba(255, 255, 255, 0.5);
+    width: auto;
+    /* Allow shrinking? or keep full? */
+    /* To keep it visually contained but responsive, let's keep width 100% of parent .container but maybe add margins? 
+       Actually, standard sticky behavior is best. Let's just radius it. */
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: -0.5px;
+}
+
+.header-links a {
+    color: var(--secondary-text);
+    text-decoration: none;
+    font-size: 0.95rem;
+    margin-left: 20px;
+    transition: color 0.2s;
+}
+
+.header-links a:hover {
+    color: var(--text-color);
+}
+
+/* Hero */
+.hero {
+    padding: 100px 0 60px;
+    text-align: center;
+    /* Or left based on preference, mostly centered for Joi style */
+}
+
+h1 {
+    font-size: 4.5rem;
+    /* Massive text */
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin: 0 0 40px 0;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    color: var(--secondary-text);
+    max-width: 600px;
+    margin: 0 auto 40px;
+    font-weight: 400;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 16px 32px;
+    border-radius: 999px;
+    /* Pill shape */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: opacity 0.2s;
+}
+
+.btn-sm {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000;
+    /* Strictly black */
+    color: white !important;
+    padding: 12px 24px;
+    /* Larger hit area */
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    gap: 8px;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn:hover,
+.btn-sm:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+/* Screenshots / Visuals */
+.visuals {
+    margin: 60px 0 140px;
+    /* More bottom margin for rotated elements */
+    text-align: center;
+    position: relative;
+    /* Height increased to fit rotated phones */
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    /* Allow phones to spill out if needed */
+    overflow: visible;
+}
+
+.phone-container {
+    position: relative;
+    width: 300px;
+    /* Base width of one phone */
+    height: 600px;
+}
+
+.phone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: transform 0.5s ease;
+    border-radius: 40px;
+    /* Match phone frame */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    /* Border to look like a device */
+    border: 8px solid #111;
+    background: #111;
+}
+
+.phone img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 32px;
+    /* Inner screen radius */
+}
+
+/* Fan Effect */
+.phone.left {
+    z-index: 1;
+    transform: translateX(-140px) translateY(40px) rotate(-15deg);
+}
+
+.phone.right {
+    z-index: 1;
+    transform: translateX(140px) translateY(40px) rotate(15deg);
+}
+
+.phone.center {
+    z-index: 10;
+    transform: translateY(0) scale(1.1);
+}
+
+/* Hover Effect (Optional - spreads them out more) */
+.phone-container:hover .phone.left {
+    transform: translateX(-160px) translateY(40px) rotate(-20deg);
+}
+
+.phone-container:hover .phone.right {
+    transform: translateX(160px) translateY(40px) rotate(20deg);
+}
+
+/* Features Text Blocks */
+.content-block {
+    margin: 120px 0;
+    text-align: center;
+}
+
+.content-block h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.content-block p {
+    font-size: 1.25rem;
+    color: var(--secondary-text);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Personality Section */
+.personality-section {
+    margin: 120px 0;
+    text-align: center;
+}
+
+.avatar-stack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    height: 120px;
+}
+
+.avatar-item {
+    width: 100px;
+    height: 100px;
+    background: transparent;
+    margin: 0 -15px;
+    /* Negative margin for overlapping/stacking */
+    transition: transform 0.3s ease, margin 0.3s ease;
+    position: relative;
+}
+
+.avatar-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Optional: Add a subtle drop shadow to separate overlapping items */
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.avatar-item:hover {
+    z-index: 10;
+    transform: translateY(-10px) scale(1.1);
+    margin: 0 10px;
+    /* Spread out on hover */
+}
+
+/* Footer */
+footer {
+    padding: 80px 0 40px;
+    border-top: 1px solid #f0f0f0;
+    text-align: center;
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: var(--secondary-text);
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3rem;
+        /* Smaller hero text */
+    }
+
+    /* Global responsive images */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .container {
+        padding: 0 16px;
+        overflow-x: hidden;
+        /* Prevent horizontal scroll from fanned elements */
+    }
+
+    /* Adjust Visuals (Phones) */
+    .visuals {
+        height: 500px;
+        /* Shorter for mobile */
+        margin-bottom: 60px;
+        /* Scale down significantly for mobile width */
+        transform: scale(0.65);
+        transform-origin: center top;
+        /* Scale from top to prevent gap */
+    }
+
+    /* Adjust Content Blocks */
+    .content-block {
+        margin: 80px 0;
+    }
+
+    .content-block h2 {
+        font-size: 2rem;
+    }
+
+    /* Adjust Avatar Stack */
+    .personality-section {
+        margin: 80px 0;
+    }
+
+    .avatar-stack {
+        transform: scale(0.9);
+        /* Scale down avatars fitting small screens */
+    }
+
+    /* Calendar Visual Demo (Mobile overrides) */
+    .calendar-visual {
+        max-width: 100%;
+        /* Allow it to shrink */
+        padding: 24px 16px;
+        /* Tighter padding on mobile */
+    }
+}
+
+/* Calendar Visual Demo (Global) */
+.calendar-visual {
+    max-width: 420px;
+    margin: 0 auto 40px;
+    padding: 32px 24px;
+    background: white;
+    border-radius: 32px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+    /* Reduced from 0.06 */
+    border: 1px solid #F3F4F6;
+}
+
+.cal-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: #111;
+}
+
+.cal-days-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.day-card {
+    width: 60px;
+    height: 85px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #9CA3AF;
+    transition: transform 0.3s ease;
+}
+
+.day-card.active {
+    background: white;
+    color: #111;
+    border: 2px solid #111;
+    transform: rotate(-6deg) scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.04);
+    /* Reduced from 0.05 */
+}
+
+.day-number {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.day-label {
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 2px;
+    text-transform: uppercase;
+}
+
+.cal-divider {
+    border-top: 2px dashed #E5E7EB;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.cal-stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.stat-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.check-icon {
+    margin-top: 8px;
+    color: #111;
+}
+
+@keyframes floatCard {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Chat UI Demo (Global) */
+.chat-demo {
+    max-width: 400px;
+    margin: 0 auto 40px;
+    padding: 20px;
+}
+
+.chat-bubble {
+    padding: 10px 12px;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    position: relative;
+    max-width: 80%;
+    border-radius: 16px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 4px;
+    animation: fadeUp 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.chat-user {
+    background-color: #007AFF !important;
+    color: white !important;
+    margin-left: auto;
+    text-align: right;
+    animation-delay: 0.2s;
+    width: fit-content;
+    border-radius: 20px 20px 4px 20px;
+}
+
+.chat-ai-row {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 24px;
+    animation: fadeUp 0.5s ease-out forwards;
+    opacity: 0;
+    animation-delay: 1.0s;
+}
+
+.chat-ai-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #E5E7EB;
+    background-image: url('logo.png');
+    background-size: cover;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.chat-ai {
+    background-color: #F3F4F6 !important;
+    color: #1F2937 !important;
+    width: fit-content;
+    margin-bottom: 0;
+    border-radius: 20px 20px 20px 4px;
+}
+
+.chat-transaction-card {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+    /* Reduced from 0.05 */
+    animation: fadeUp 0.5s ease-out forwards;
+    opacity: 0;
+    animation-delay: 1.8s;
+}
+
+.card-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
