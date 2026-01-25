@@ -57,10 +57,16 @@ header.scrolled {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
     /* Slightly stronger shadow when floating */
     border-color: rgba(255, 255, 255, 0.5);
-    width: auto;
-    /* Allow shrinking? or keep full? */
-    /* To keep it visually contained but responsive, let's keep width 100% of parent .container but maybe add margins? 
-       Actually, standard sticky behavior is best. Let's just radius it. */
+
+    /* Centering Fix */
+    width: calc(100% - 48px);
+    /* Full width minus margins */
+    max-width: 800px;
+    /* Or container max-width */
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .logo {
@@ -155,7 +161,8 @@ h1 {
     display: flex;
     justify-content: center;
     /* Allow phones to spill out if needed */
-    overflow: visible;
+    overflow: hidden;
+    /* Changed from visible to hidden to prevent unwanted scroll */
 }
 
 .phone-container {
@@ -466,6 +473,9 @@ footer a:hover {
 /* Chat UI Demo (Global) */
 .chat-demo {
     max-width: 400px;
+    width: 100%;
+    /* Ensure it doesn't overflow */
+    box-sizing: border-box;
     margin: 0 auto 40px;
     padding: 20px;
 }
