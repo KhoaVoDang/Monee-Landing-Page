@@ -157,19 +157,19 @@ h1 {
     text-align: center;
     position: relative;
     /* Height increased to fit rotated phones */
-    height: 700px;
+    height: 800px;
     display: flex;
     justify-content: center;
     /* Allow phones to spill out if needed */
-    overflow: hidden;
-    /* Changed from visible to hidden to prevent unwanted scroll */
+    overflow: visible;
+    /* Changed from hidden to visible */
 }
 
 .phone-container {
     position: relative;
     width: 300px;
     /* Base width of one phone */
-    height: 600px;
+    height: 700px;
 }
 
 .phone {
@@ -317,8 +317,8 @@ footer a:hover {
 
     /* Adjust Visuals (Phones) */
     .visuals {
-        height: 500px;
-        /* Shorter for mobile */
+        height: 550px;
+        /* Adjusted for mobile */
         margin-bottom: 60px;
         /* Scale down significantly for mobile width */
         transform: scale(0.65);
